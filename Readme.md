@@ -56,7 +56,7 @@ Setup configuration object before passing it into the execute method.  **cols** 
 	  	var result = nodeExcel.execute(conf);
 	  	res.setHeader('Content-Type', 'application/vnd.openxmlformats');
 	  	res.setHeader("Content-Disposition", "attachment; filename=" + "Report.xlsx");
-	  	res.end(result, 'binary');
+	  	result.pipe(res);
 	});
 
 	app.listen(3000);
