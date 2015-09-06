@@ -19,10 +19,18 @@ describe('Simple Excel xlsx Export', function() {
 			["M&M<>'", (new Date(Date.UTC(2013, 6, 9))).oaDate(), false, 1.2],
 			["null", null, null, null]
 		];
-			
-	      var result = nodeExcel.execute(conf),
-				    fs = require('fs');
-				fs.writeFileSync('d.xlsx', result, 'binary');			
+		var fs = require('fs');
+		var output = fs.createWriteStream('./d.xlsx');
+	  var result = nodeExcel.execute(conf);
+	  result.pipe(output);
+	  result.on('error', function(err) {
+		  throw err;
+		});
+		output.on('close', function() {
+		  console.log(archive.pointer() + ' total bytes');
+		  console.log('archiver has been finalized and the output file descriptor has closed.');
+		});
+		setTimeout(function (){}, 5000);
 		});
     });
 });

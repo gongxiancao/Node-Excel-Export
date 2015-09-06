@@ -14,8 +14,8 @@
   "author": "Ber-Lin Lai <berlin.lai@gmail.com>",
   "license": "BSD",
   "dependencies": {
-    "collections": "^1.2.1",
-    "node-zip": "1.x"
+    "archiver": "^0.15.0",
+    "collections": "^1.2.1"
   },
   "devDependencies": {
     "mocha": "",
